@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UserRegistrationSystem.Management.App.API</name>
+    </assembly>
+    <members>
+        <member name="T:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.#ctor(UserRegistrationSystem.Core.Services.IService)">
+            <summary>
+            
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.Login(UserRegistrationSystem.Core.Models.Models.LoginModel)">
+            <summary>
+            ლოგირება
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.RegisterUser(UserRegistrationSystem.Core.Models.Models.AddUserRequest)">
+            <summary>
+            მომხმარებლის შექმნა
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.UpdateUser(UserRegistrationSystem.Core.Models.Models.AddUserRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UserRegistrationSystem.Management.App.API.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:UserRegistrationSystem.Management.App.API.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>

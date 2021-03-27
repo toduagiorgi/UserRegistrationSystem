@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UserRegistrationSystem.Core.Repositories\UserRegistrationSystem.Core.Repositories.csproj" />
+    <ProjectReference Include="..\UserRegistrationSystem.Core.Services\UserRegistrationSystem.Core.Services.csproj" />
+    <ProjectReference Include="..\UserRegistrationSystem.Infrastructure.Mapping\UserRegistrationSystem.Infrastructure.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>
