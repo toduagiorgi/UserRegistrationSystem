@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,15 @@ using UserRegistrationSystem.Core.Models.Exceptions;
 using UserRegistrationSystem.Core.Models.Models;
 using UserRegistrationSystem.Core.Repositories;
 using UserRegistrationSystem.Core.Services;
-using UserRegistrationSystem.Infrastructure.Mapping.DBModelsMapping;
 
 namespace UserRegistrationSystem.Infrastructure.Services
 {
-    public class Service : IService
+    public class UsersService : IUsersService
     {
-        private readonly IRepository _repository;
+        private readonly IUsersRepository _repository;
         private readonly IConfiguration _configuration;
 
-        public Service(IRepository repository, IConfiguration configuration)
+        public UsersService(IUsersRepository repository, IConfiguration configuration)
         {
             _repository = repository;
             _configuration = configuration;
@@ -30,16 +30,29 @@ namespace UserRegistrationSystem.Infrastructure.Services
             var existedUser = await _repository.GetUserByUserName(user.UserName);
             if (existedUser != null)
             {
-                throw new UserExistsException();
+                throw new UserAlreadyExistsException();
             }
-            var result = await _repository.AddUser(user);
-            return result.user;
+            return await _repository.AddUser(user);
         }
 
         public async Task<User> UpdateUser(User user)
         {
-            var result = await _repository.UpdateUser(user);
-            return result.user;
+            var result = await _repository.UpdateUserAndAddress(user);
+            if (result == null)
+            {
+                throw new UserNotExistsException();
+            }
+            return result;
+        }
+
+        public async Task<IdentityResult> DeleteUser(string userName)
+        {
+            var existedUser = await _repository.GetUserByUserName(userName);
+            if (existedUser == null)
+            {
+                throw new UserNotExistsException();
+            }
+            return await _repository.DeleteUser(existedUser);
         }
 
         public async Task<string> LogIn(LoginModel model)
@@ -60,7 +73,7 @@ namespace UserRegistrationSystem.Infrastructure.Services
                 var authSigninKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("JWT:Secret").Value));
                 var token = new JwtSecurityToken(issuer: _configuration.GetSection("JWT:ValidIssuer").Value,
                                                  audience: _configuration.GetSection("JWT:ValidAudience").Value,
-                                                 expires: DateTime.Now.AddSeconds(150),
+                                                 expires: DateTime.Now.AddSeconds(Convert.ToDouble(_configuration.GetSection("JWT:ExpirationTimeInSeconds").Value)),
                                                  claims: authClaims,
                                                  signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256));
 

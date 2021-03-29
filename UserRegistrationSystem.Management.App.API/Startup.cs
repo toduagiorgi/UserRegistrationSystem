@@ -75,7 +75,7 @@ namespace UserRegistrationSystem.Management.App.API
                     {
                         Implicit = new OpenApiOAuthFlow
                         {
-                            AuthorizationUrl = new Uri(Configuration.GetSection("JWT:ValidIssuer").Value + "api/UserRegistrationSystem/RegisterUser", UriKind.Absolute),
+                            AuthorizationUrl = new Uri(Configuration.GetSection("JWT:ValidIssuer").Value + "api/UserRegistrationSystemManager", UriKind.Absolute),
                             Scopes = new Dictionary<string, string>
                 {
                     { "readAccess", "Access read operations" },
@@ -143,8 +143,8 @@ namespace UserRegistrationSystem.Management.App.API
 
 
             services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("MSSQL")), ServiceLifetime.Transient);
-            services.AddScoped<IRepository, Repository>();
-            services.AddScoped<IService, Service>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

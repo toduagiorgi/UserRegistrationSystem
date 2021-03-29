@@ -1,16 +1,13 @@
 ﻿using FluentMapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UserRegistrationSystem.Core.Models.Models;
 
 namespace UserRegistrationSystem.Infrastructure.Mapping
 {
-    public static class AddUserRequestMap
+    public static class UpdateUserRequestMap
     {
-        public static User ToUserMap(this AddUserRequest user)
+        public static User ToUserMap(this UpdateRequest user)
         {
-            var mapper = FluentMapper.ThatMaps<User>().From<AddUserRequest>()
+            var mapper = FluentMapper.ThatMaps<User>().From<UpdateRequest>()
                                      .IgnoringTargetProperty(z => z.Id)
                                      .IgnoringTargetProperty(z => z.AccessFailedCount)
                                      .IgnoringTargetProperty(z => z.ConcurrencyStamp)
@@ -24,6 +21,9 @@ namespace UserRegistrationSystem.Infrastructure.Mapping
                                      .IgnoringTargetProperty(z => z.PhoneNumberConfirmed)
                                      .IgnoringTargetProperty(z => z.SecurityStamp)
                                      .IgnoringTargetProperty(z => z.TwoFactorEnabled)
+                                     .IgnoringTargetProperty(z => z.Email)
+                                     .IgnoringTargetProperty(z => z.Password)
+                                     .IgnoringTargetProperty(z => z.PersonalId)
                                      .Create();
             return mapper.Map(user);
         }

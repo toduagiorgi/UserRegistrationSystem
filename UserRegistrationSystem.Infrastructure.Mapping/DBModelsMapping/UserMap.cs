@@ -25,6 +25,8 @@ namespace UserRegistrationSystem.Infrastructure.Mapping.DBModelsMapping
             var mapper = FluentMapper.ThatMaps<User>().From<RelationalDatabase.DBEntities.User>()
                                      .ThatSets(tgt => tgt.Address).From(src => src.Address.ToObject())
                                      .IgnoringTargetProperty(x => x.Password)
+                                     .WithNullSource()
+                                     .ReturnNull()
                                      .Create();
             return mapper.Map(user);
         }

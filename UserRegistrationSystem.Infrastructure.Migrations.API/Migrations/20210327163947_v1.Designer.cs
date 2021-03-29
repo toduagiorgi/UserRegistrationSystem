@@ -10,7 +10,7 @@ using UserRegistrationSystem.Infrastructure.RelationalDatabase;
 namespace UserRegistrationSystem.Infrastructure.Migrations.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210326132202_v1")]
+    [Migration("20210327163947_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -157,6 +157,9 @@ namespace UserRegistrationSystem.Infrastructure.Migrations.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Apartment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Building")
                         .HasColumnType("nvarchar(max)");
 
@@ -198,9 +201,6 @@ namespace UserRegistrationSystem.Infrastructure.Migrations.API.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsEmployed")

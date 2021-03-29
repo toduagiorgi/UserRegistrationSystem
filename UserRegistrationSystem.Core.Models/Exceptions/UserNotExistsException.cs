@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UserRegistrationSystem.Core.Models.Exceptions
 {
-    public class UserAlreadyExistsException : Exception
+    public class UserNotExistsException : Exception
     {
     }
 }

@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 using UserRegistrationSystem.Core.Models.Models;
-using UserRegistrationSystem.Core.Models.Response;
 
 namespace UserRegistrationSystem.Core.Services
 {
-    public interface IService
+    public interface IUsersService
     {
         Task<User> AddUser(User user);
         Task<User> UpdateUser(User user);
+        Task<IdentityResult> DeleteUser(string userName);
         Task<string> LogIn(LoginModel model);
     }
 }

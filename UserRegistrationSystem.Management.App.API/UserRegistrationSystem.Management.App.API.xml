@@ -4,36 +4,82 @@
         <name>UserRegistrationSystem.Management.App.API</name>
     </assembly>
     <members>
-        <member name="T:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController">
+        <member name="T:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemAuthorizationController">
             <summary>
             
             </summary>
         </member>
-        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.#ctor(UserRegistrationSystem.Core.Services.IService)">
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemAuthorizationController.#ctor(UserRegistrationSystem.Core.Services.IUsersService)">
             <summary>
             
             </summary>
             <param name="service"></param>
         </member>
-        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.Login(UserRegistrationSystem.Core.Models.Models.LoginModel)">
-            <summary>
-            ლოგირება
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.RegisterUser(UserRegistrationSystem.Core.Models.Models.AddUserRequest)">
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemAuthorizationController.RegisterUser(UserRegistrationSystem.Core.Models.Models.AddUserRequest)">
             <summary>
             მომხმარებლის შექმნა
             </summary>
-            <param name="request"></param>
+            <param name="request">
+            PersonalId - მომხმარებლის პირადი ნომერი;
+            IsMarried - არის თუ არა დაოჯახებული მომხმარებელი;
+            IsEmployed - არის თუ არა დასაქმებული მომხმარებელი;
+            Salary - ხელფასი;
+            Password - მომხმარებლის პაროლი;
+            UserName - მომხმარებლის სისტემური სახელი;
+            Email - მომხმარებლის ელექტრონული ფოსტა;
+            Country - ქვეყანა;
+            City - ქალაქი;
+            Street - ქუჩა;
+            Building - საცხოვრებელი შენობა(კორპუსი);
+            Apartment - ბინა;
+            </param>
             <returns></returns>
         </member>
-        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemController.UpdateUser(UserRegistrationSystem.Core.Models.Models.AddUserRequest)">
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemAuthorizationController.Login(UserRegistrationSystem.Core.Models.Models.LoginModel)">
+            <summary>
+            დალოგინება
+            </summary>
+            <param name="model">
+            UserName - მომხმარებლის სისტემური სახელი;
+            Password - მომხმარებლის პაროლი;
+            </param>
+            <returns></returns>
+        </member>
+        <member name="T:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemManagerController">
             <summary>
             
             </summary>
-            <param name="request"></param>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemManagerController.#ctor(UserRegistrationSystem.Core.Services.IUsersService)">
+            <summary>
+            
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemManagerController.UpdateUser(UserRegistrationSystem.Core.Models.Models.UpdateRequest)">
+            <summary>
+            მომხმარებელზე ინფორმაციის განახლება
+            </summary>
+            <param name="request">
+            UserName - მომხმარებლის სისტემური სახელი;
+            IsMarried - არის თუ არა დაოჯახებული მომხმარებელი;
+            IsEmployed - არის თუ არა დასაქმებული მომხმარებელი;
+            Salary - ხელფასი;        
+            Country - ქვეყანა;
+            City - ქალაქი;
+            Street - ქუჩა;
+            Building - საცხოვრებელი შენობა(კორპუსი);
+            Apartment - ბინა;
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:UserRegistrationSystem.Management.App.API.Controllers.UserRegistrationSystemManagerController.DeleteUser(UserRegistrationSystem.Core.Models.Models.DeleteUserRequest)">
+            <summary>
+            მომხმარებლის წაშლა
+            </summary>
+            <param name="request">
+            UserName - მომხმარებლის სისტემური სახელი;
+            </param>
             <returns></returns>
         </member>
         <member name="T:UserRegistrationSystem.Management.App.API.Startup">

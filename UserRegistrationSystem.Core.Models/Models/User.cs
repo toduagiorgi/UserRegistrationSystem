@@ -9,7 +9,6 @@ namespace UserRegistrationSystem.Core.Models.Models
         public bool IsMarried { get; set; }
         public bool IsEmployed { get; set; }
         public double Salary { get; set; }
-        public bool IsActive { get; set; }
         public string Password { get; set; }
         public Address Address { get; set; }
     }

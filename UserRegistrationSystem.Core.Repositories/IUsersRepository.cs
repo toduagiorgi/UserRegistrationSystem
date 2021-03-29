@@ -6,14 +6,13 @@ using UserRegistrationSystem.Infrastructure.RelationalDatabase.DBEntities;
 
 namespace UserRegistrationSystem.Core.Repositories
 {
-    public interface IRepository
+    public interface IUsersRepository
     {
-        Task<(IdentityResult identityResult, Models.Models.User user)> AddUser(Models.Models.User user);
-        Task<Address> AddAddress(Address address);
+        Task<Models.Models.User> AddUser(Models.Models.User user);
         Task<User> GetUserByUserName(string userName);
-        Task<Address> GetAddressByUserId(Guid? userId);
-        Task<(IdentityResult identityResult, Models.Models.User user)> UpdateUser(Models.Models.User user);
+        Task<Models.Models.User> UpdateUserAndAddress(Models.Models.User user);
         Task<bool> CheckUserPassword(Models.Models.LoginModel loginModel);
         Task<List<string>> GetUserRoles(string userName);
+        Task<IdentityResult> DeleteUser(User user);
     }
 }
