@@ -17,7 +17,7 @@ namespace UserRegistrationSystem.Management.App.API.Controllers
     /// <summary>
     /// 
     /// </summary>
-    //[Authorize]
+    [Authorize]
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class UserRegistrationSystemManagerController : ControllerBase
